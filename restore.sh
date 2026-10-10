@@ -32,6 +32,7 @@ if [ $action -eq 1 ]
 then
 cp $selected $1
 rm $selected
+basename $selected >> whitelist.txt
 echo "Restored $selected to $1."
 exit
 elif [ $action -eq 2 ]

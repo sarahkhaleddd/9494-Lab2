@@ -3,6 +3,10 @@ if ! [ -f directory-info.last ]
 then
 for file in $1/*
 do
+if [ -f whitelist.txt ] && grep -x "$(basename "$file")" whitelist.txt
+then 
+	continue
+fi
 case $file in
 *.exe|*.bat|*.vbs|*.scr|*.ps1)
 echo "$file is malicious and it is DELETED"
@@ -29,6 +33,10 @@ if ! diff directory-info.last directory-info.new
 then
 for file in $1/*
 do
+if [ -f whitelist.txt ] && grep -x "$(basename "$file")" whitelist.txt
+then 
+        continue
+fi
 case $file in
 *.exe|*.bat|*.vbs|*.scr|*.ps1)
 echo "$file is malicious and it is DELETED"
