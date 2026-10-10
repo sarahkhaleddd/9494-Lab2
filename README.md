@@ -45,6 +45,7 @@ The whitelist stores the filenames of files that have been restored from quarant
 ## Adding a file to whitelist
 When the user selects option 1 (Restore) in restore.sh, the file is copied from the malicious directory  back to the original directory specified by the user. The quarantined copy is then removed, and the file's name is added to whitelist.txt using basename. This allows the daemon to remember that the file was previously restored as a false positive.
 
-##Checking the whitelist
-Before checking a file's extension or contents, antivirusd.sh checks whether whitelist.txt exists. If it does, the daemon checks for an exact filename match in the whitelist. If a match is found, it skips the rest of the current loop iteration, so the file is not scanned or quarantined again.
+##  Checking the whitelist
+Before checking a file's extension or contents, antivirusd.sh checks whether whitelist.txt exists. If it does, the daemon checks for an exact filename match in the whitelist. If a match is found, it skips the rest of the current loop iteration, so the file is not scanned or quarantined again. Since the whitelist is stored in a text file on disk, it persists across daemon restarts.
+
 
